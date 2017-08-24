@@ -18,8 +18,8 @@ public class ClientTest {
     myClient1.save();
     Client myClient2= new Client("Elvis", 1);
     myClient2.save();
-    assertEquals(myClient1.getName(), Client.all().get(0).getName());
-    assertEquals(myClient2.getName(), Client.all().get(1).getName());
+    assertEquals(true, Client.all().get(0).equals(myClient1));
+    assertEquals(true, Client.all().get(1).equals(myClient2));
    }
 
 }

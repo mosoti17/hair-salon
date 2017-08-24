@@ -9,6 +9,13 @@ import java.util.ArrayList;
 public class StylistTest {
     @Rule
     public DatabaseRule database = new DatabaseRule();
+    @Test 
+    public void save_assingsIdToIstance(){
+        Stylist myStylist = new Stylist("Jay jay");
+        myStylist.save();
+        Stylist savedStylist = Stylist.all().get(0);
+        assertEquals(myStylist.getId(),savedStylist.getId() ) ; 
+    }
 
     @Test
         public void stylist_stylistInstatiatesProperly(){
@@ -23,9 +30,12 @@ public class StylistTest {
             Stylist myStylist1 = new Stylist("Jay jay1");
             myStylist1.save();
 
-            assertEquals(myStylist.getName(), Stylist.all().get(0).getName());
-            assertEquals(myStylist1.getName(), Stylist.all().get(1).getName());    
+            assertEquals(true, Stylist.all().get(0).equals(myStylist));
+            assertEquals(true, Stylist.all().get(1).equals(myStylist1));    
         }
+        
+
+        
     
   
 }
