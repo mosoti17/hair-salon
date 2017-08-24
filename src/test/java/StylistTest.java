@@ -20,7 +20,11 @@ public class StylistTest {
         public void all_returnsAllInstancesOfStylist(){
             Stylist myStylist = new Stylist("Jay jay");
             myStylist.save();
-            assertEquals(myStylist.getName(), Stylist.all().get(0).getName());  
+            Stylist myStylist1 = new Stylist("Jay jay1");
+            myStylist1.save();
+
+            assertEquals(myStylist.getName(), Stylist.all().get(0).getName());
+            assertEquals(myStylist1.getName(), Stylist.all().get(1).getName());    
         }
     
   

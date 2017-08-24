@@ -25,8 +25,8 @@ public class Stylist {
       .addParameter("name", this.name)
       .executeUpdate()
       .getKey();
-  }
-}
+    }
+ }
 public static List<Stylist> all() {
     String sql = "SELECT id, name FROM stylists";
     try(Connection con = DB.sql2o.open()) {
