@@ -21,5 +21,12 @@ public class ClientTest {
     assertEquals(true, Client.all().get(0).equals(myClient1));
     assertEquals(true, Client.all().get(1).equals(myClient2));
    }
-
+   @Test
+   public void find_ReturnsClientWithSameId(){
+   Client myClient1= new Client("Mercy", 1);
+   myClient1.save();
+   Client myClient2= new Client("Elvis", 1);
+   myClient2.save();
+   assertEquals(Client.find(myClient2.getId()), myClient2);
+}
 }
