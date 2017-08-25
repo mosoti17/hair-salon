@@ -1,0 +1,10 @@
+<h1>$stylist.getName()</h1>
+<form  action="/stylists/$stylist.getId()" method="post">
+  <label for="Name"></label>
+  <input type="text" name="name" value="" class="form-control">
+  <button type="submit" class="btn btn-info">Update Stylist</button>
+</form>
+
+#foreach($client in $stylist.getClients())
+  <li>$client.getName()</li>
+#end

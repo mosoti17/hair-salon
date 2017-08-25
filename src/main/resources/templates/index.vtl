@@ -7,7 +7,24 @@
   <button type="submit" class="btn btn-success" >Add Stylist</button>
 </form>
 
+<form class="form-control" action="/stylists/hyfghng" method="post">
+  <div >
+    <label for="name"></label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <div >
+    <label for="stylistid"></label>
+    <select id='stylistid' name='stylistid' type='text'>
+        #foreach($stylist in $stylists)
+          <option value="$stylist.getId()">$stylist.getName()</option>
+        #end
+      </select>
+  </div>
+  <button type="submit" class="btn btn-success" >Add Client</button>
+</form>
+
 <div class="stylists">
+
   #foreach($stylist in $stylists)
   <li><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
   #end

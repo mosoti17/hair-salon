@@ -26,10 +26,29 @@ public class App{
     get("/stylists/:id", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
-        model.put("stylists", stylist);
-        model.put("template", "templates/category.vtl");
+        model.put("stylist", stylist);
+        model.put("template", "templates/stylist.vtl");
         return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-
+    post("/stylists/:id", (request, response) -> {
+        Map<String, Object> model = new HashMap<String, Object>();
+        try{
+        Stylist stylistid = Stylist.find(Integer.parseInt(request.queryParams("stylistid")));
+        String name = request.queryParams("name");
+        Client newClient = new Client(name,stylistid.getId());
+        newClient.save();
+        String url = String.format("/stylists/%d", stylistid.getId());
+        response.redirect(url); 
+        } catch(NumberFormatException e ) {
+          Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
+          String name = request.queryParams("name");
+          stylist.update(name);
+          String url = String.format("/stylists/%d", stylist.getId());
+          response.redirect(url);
+        }
+        model.put("template", "templates/stylist.vtl");
+        return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+     
   }
 }
