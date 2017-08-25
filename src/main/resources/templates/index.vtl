@@ -1,1 +1,14 @@
-<h1>HAir salon website</h1>
+<h1>Hair salon website</h1>
+<form action="/" method="post">
+  <div >
+    <label for="name"></label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-success" >Add Stylist</button>
+</form>
+
+<div class="stylists">
+  #foreach($stylist in $stylists)
+  <li><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
+  #end
+</div>
