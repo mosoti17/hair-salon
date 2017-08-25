@@ -29,4 +29,17 @@ public class ClientTest {
    myClient2.save();
    assertEquals(Client.find(myClient2.getId()), myClient2);
 }
+@Test
+public void update_updatesClientsName(){
+    Client myClient= new Client("Mercy", 1); 
+    myClient.save();
+    myClient.update("elvis");
+    assertEquals("elvis", Client.find(myClient.getId()).getName());
+}
+public void delete_deleteClient(){
+    Client myClient= new Client("Mercy", 1); 
+    myClient.save();
+    myClient.delete();
+    assertEquals(null, Client.find(myClient.getId()));
+}
 }

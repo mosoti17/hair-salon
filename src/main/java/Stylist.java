@@ -72,9 +72,13 @@ public static List<Stylist> all() {
   public void delete(){
     try(Connection con = DB.sql2o.open()) {
       String cat_sql = "DELETE FROM stylists WHERE id = :id";
+      String task_sql = "DELETE FROM CLIENTS WHERE stylistid=:id";
       con.createQuery(cat_sql)
         .addParameter("id", id)
         .executeUpdate();
+        con.createQuery(task_sql)
+          .addParameter("id", id)
+         .executeUpdate();
       }
   }
 }
