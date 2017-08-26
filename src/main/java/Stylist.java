@@ -6,11 +6,13 @@ import java.util.ArrayList;
 */
 public class Stylist {
    private String name;
+   private String image;
    private int id;
    
 
-   public Stylist (String name) {
+   public Stylist (String name,String image ){
      this.name =name; 
+     this.image = image;
    }
    public String getName(){
        return name;
@@ -18,17 +20,21 @@ public class Stylist {
    public int getId(){
        return id;
    }
+   public String getImage(){
+     return image;
+   }
    public void save() {
   try(Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO stylists(name) VALUES (:name)";
+    String sql = "INSERT INTO stylists(name,image) VALUES (:name, :image)";
     this.id = (int) con.createQuery(sql, true)
       .addParameter("name", this.name)
+      .addParameter("image", this.image)
       .executeUpdate()
       .getKey();
     }
  }
 public static List<Stylist> all() {
-    String sql = "SELECT id, name FROM stylists";
+    String sql = "SELECT id, name ,image FROM stylists";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Stylist.class);
     }

@@ -1,31 +1,64 @@
 <h1>Hair salon website</h1>
-<form action="/" method="post">
-  <div >
-    <label for="name"></label>
-    <input type="text" name="name" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-success" >Add Stylist</button>
-</form>
 
-<form class="form-control" action="/stylists/hyfghng" method="post">
-  <div >
-    <label for="name"></label>
-    <input type="text" name="name" class="form-control">
-  </div>
-  <div >
-    <label for="stylistid"></label>
-    <select id='stylistid' name='stylistid' type='text'>
-        #foreach($stylist in $stylists)
-          <option value="$stylist.getId()">$stylist.getName()</option>
-        #end
-      </select>
-  </div>
-  <button type="submit" class="btn btn-success" >Add Client</button>
-</form>
+<div class="col-md-5">
+  <form action="/" method="post">
+      <div class="row">
+        <div >
+          <label for="name">Add a Stylist</label>
+          <input type="text" name="name" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div >
+          <label for="image">Add Image url</label>
+          <input type="text" name="image" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <br><button type="submit" class="btn btn-success" >Add Stylist</button>
+      </div>
+  </form>
+</div>
+
+<div class="col-md-4">
+
+  <form class="form-control" action="/stylists/stylistid" method="post">
+
+      <div class="row">
+        <div >
+          <label for="name">Enter Clients Name</label>
+          <input type="text" name="name" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div >
+          <label for="stylistid">Chose Clients stylist</label><br>
+          <select id='stylistid' name='stylistid' type='text'>
+              #foreach($stylist in $stylists)
+                <option value="$stylist.getId()">$stylist.getName()</option><br><br>
+              #end
+            </select>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn btn-success" >Add Client</button>
+      </div>
+
+  </form>
+
+</div>
+
+
+
 
 <div class="stylists">
+<div class="row">
+    #foreach($stylist in $stylists)
+    <div class="col-md-3 col-md-offset-1">
+    <img src="$stylist.getImage()" alt="$stylist.getName()'s image">
+    <li><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
+    </div>
+    #end
+</div>
 
-  #foreach($stylist in $stylists)
-  <li><a href="/stylists/$stylist.getId()">$stylist.getName()</a></li>
-  #end
 </div>

@@ -31,7 +31,8 @@ public class App{
     post("/", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
         String name = request.queryParams("name");
-        Stylist newStylist = new Stylist(name);
+        String image = request.queryParams("image");
+        Stylist newStylist = new Stylist(name, image);
         newStylist.save();
         model.put("stylists", Stylist.all());
         model.put("template", "templates/index.vtl");

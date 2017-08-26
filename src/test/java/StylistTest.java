@@ -12,7 +12,7 @@ public class StylistTest {
     public DatabaseRule database = new DatabaseRule();
     @Test 
     public void save_assingsIdToIstance(){
-        Stylist myStylist = new Stylist("Jay jay");
+        Stylist myStylist = new Stylist("Jay jay", "image");
         myStylist.save();
         Stylist savedStylist = Stylist.all().get(0);
         assertEquals(myStylist.getId(),savedStylist.getId() ) ; 
@@ -20,15 +20,15 @@ public class StylistTest {
 
     @Test
         public void stylist_stylistInstatiatesProperly(){
-            Stylist myStylist = new Stylist("Jay jay");
+            Stylist myStylist = new Stylist("Jay jay", "image");
             myStylist.save();
             assertTrue(myStylist instanceof Stylist);
         }
         @Test
         public void all_returnsAllInstancesOfStylist(){
-            Stylist myStylist = new Stylist("Jay jay");
+            Stylist myStylist = new Stylist("Jay jay", "image");
             myStylist.save();
-            Stylist myStylist1 = new Stylist("Jay jay1");
+            Stylist myStylist1 = new Stylist("Jay jay1", "image");
             myStylist1.save();
 
             assertEquals(true, Stylist.all().get(0).equals(myStylist));
@@ -36,15 +36,15 @@ public class StylistTest {
         }
         @Test
         public void find_returnsStylistWithSameId(){
-            Stylist myStylist = new Stylist("Jay jay");
+            Stylist myStylist = new Stylist("Jay jay", "image");
             myStylist.save();
-            Stylist myStylist1 = new Stylist("Jay");
+            Stylist myStylist1 = new Stylist("Jay","image");
             myStylist1.save();  
             assertEquals(Stylist.find(myStylist1.getId()),myStylist1);
         }
         @Test
         public void getClients_RetrivesAllClientsWithTheSameStylist(){
-            Stylist myStylist = new Stylist("Jay jay");
+            Stylist myStylist = new Stylist("Jay jay","image");
             myStylist.save();
             Client myClient1= new Client("Mercy", myStylist.getId());
             myClient1.save();
@@ -56,14 +56,14 @@ public class StylistTest {
         }
         @Test
         public void update_updatesStylistName(){
-            Stylist myStylist = new Stylist("Jay jay");
+            Stylist myStylist = new Stylist("Jay jay", "image");
             myStylist.save();
             myStylist.update("elvis");
             assertEquals("elvis", Stylist.find(myStylist.getId()).getName()); 
         }
         @Test
         public void delete_deletesStylist_null(){
-            Stylist myStylist = new Stylist("Jay jay");
+            Stylist myStylist = new Stylist("Jay jay","image");
             myStylist.save();
             myStylist.delete();
             assertEquals(null, Stylist.find(myStylist.getId()));  
