@@ -72,6 +72,10 @@ h1{
 #delete{
   margin-left: 100%;
 }
+.delete{
+  margin-top: 15%;
+  padding-left: 40%;
+}
 .shead{
 
   margin: 6%;
@@ -80,4 +84,7 @@ h1{
 .clients{
   padding-left: 25%;
   font-size: 30px;
+}
+.offset{
+  margin-left: 20%;
 }
