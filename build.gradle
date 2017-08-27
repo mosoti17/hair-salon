@@ -1,27 +1,24 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
+archivesBaseName = "hair-salon"
+version = '1.0'
+mainClassName = "App"
+
 repositories {
-    jcenter()
+  mavenCentral()
 }
 
 dependencies {
-    compile 'com.sparkjava:spark-core:2.5.5'
-    compile 'org.slf4j:slf4j-simple:1.7.21'
-    compile 'com.sparkjava:spark-template-velocity:2.5.5'
-    compile 'org.sql2o:sql2o:1.5.4'
-    compile 'org.postgresql:postgresql:9.4-1201-jdbc41'
-    testCompile 'junit:junit:4.12'
+  compile group: 'com.sparkjava', name: 'spark-core', version: '2.3'
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+  compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
+  compile group: 'org.sql2o', name: 'sql2o', version: '1.5.4'
+  compile group: 'org.postgresql', name: 'postgresql', version: "9.4-1201-jdbc41"
 }
 
-test {
-  testLogging {
-    exceptionFormat = 'full'
-    events "passed", "skipped", "failed"
-  }
-}
 
 applicationName = "hairsalon"
-mainClassName = 'App'
 
-task stage(dependsOn: ['clean', 'installDist'])
+defaultTasks = ['clean']
+task stage(dependsOn: ['clean', 'installApp'])
