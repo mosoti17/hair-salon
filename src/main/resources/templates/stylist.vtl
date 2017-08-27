@@ -1,4 +1,4 @@
-<h1>$stylist.getName()</h1>
+<h1 style="text-align:center">$stylist.getName()</h1>
 <form  action="/stylists/$stylist.getId()" method="post">
   <label for="Name"></label>
   <input type="text" name="name" value="" class="form-control">
@@ -8,6 +8,7 @@
   <button type="submit" class="btn btn-danger" id="delete-stylist">Delete Stylist</button>
 </form>
 
+  <h2>$stylist.getName()'s Clients</h2>
 #foreach($client in $stylist.getClients())
   <li><a href="/stylists/$stylist.getId()/clients/$client.getId()"> $client.getName()</a></li>
 #end
