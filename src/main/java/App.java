@@ -89,9 +89,18 @@ public class App{
       String name = request.queryParams("name");
       Stylist stylist = Stylist.find(client.getStylistId());
       client.update(name);
-      String url = String.format("/categories/%d/tasks/%d", stylist.getId(), client.getId());
+      String url = String.format("/stylists/%d/clients/%d", stylist.getId(), client.getId());
       response.redirect(url);
       return new ModelAndView(model, layout);
      }, new VelocityTemplateEngine());
+     post("/stylists/:id/clients/:clientid/delete", (request, response) -> {
+       Map<String, Object> model = new HashMap<String, Object>();
+       Client client = Client.find(Integer.parseInt(request.params(":clientid")));
+       Stylist stylist = Stylist.find(client.getStylistId());
+       client.delete();
+       String url = String.format("/stylists/%d", stylist.getId());
+       response.redirect(url);
+       return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
   }
 }
