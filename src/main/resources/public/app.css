@@ -1,0 +1,65 @@
+body{
+  background-image: url(images/bg.jpg);
+}
+.stylist{
+  margin-right: 4%;
+  /*box-shadow: 10px 10px 5px #888888;*/
+}
+.stylist img{
+  height: 220px;
+  width: 220px;
+}
+#name{
+  text-align: center;
+  background-color: #f2f4f7;
+  padding-left: 20%;
+  margin-right: 0.5%;
+  margin-left: 0.5%;
+  padding-top: 1%;
+}
+#name p{
+  text-align: center;
+}
+.head h1{
+  text-align: center;
+  font-family: 'Sancreek', cursive;
+  font-size: 100px;
+  margin-bottom: 3%;
+  margin-top: 1%;
+}
+hr{
+  height:2px;
+  border:none;
+  color:#c7c9cc;
+background-color: #c7c9cc;
+}
+.stylistadd{
+
+margin: 2%;
+padding-left: 3%;
+}
+.clientadd{
+
+margin: 2%;
+
+padding-left: 3%;
+}
+.cover{
+background-color: #f2f4f7;
+}
+#stylistid{
+  width: 100%;
+  text-align: center;
+}
+h3{
+  text-align: center;
+}
+.move{
+  margin-left: 5%;
+}
+.nostylist{
+  padding-left: 20%;
+  color: #696d72;
+  margin-top: 9%;
+
+}
